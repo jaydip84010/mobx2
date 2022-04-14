@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_proj/main.dart';
@@ -11,7 +13,7 @@ class LOgInScreen extends StatefulWidget {
 }
 
 class _LOgInScreenState extends State<LOgInScreen> {
-  var image;
+  String? images;
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
 
@@ -19,7 +21,7 @@ class _LOgInScreenState extends State<LOgInScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    image = stateSave.image;
+    images = stateSave.image;
     name.text = stateSave.name;
     email.text = stateSave.email;
   }
@@ -29,34 +31,43 @@ class _LOgInScreenState extends State<LOgInScreen> {
     return Observer(
       builder: (_) {
         return SafeArea(
-            child: Form(
-          child: Column(
-            children: [
-              Image(image: image),
-              SizedBox(
-                height: 10,
-              ),
-              TextFormField(controller: name),
-              SizedBox(
-                height: 10,
-              ),
-              TextFormField(controller: email),
-              SizedBox(
-                height: 10,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => UpdateScreen()));
-                },
-                child: Container(
-                  height: 40,
-                  width: 70,
-                  color: Colors.green,
-                  child: Center(child: Text('Log in')),
+            child: Scaffold(
+          body: Form(
+            child: Column(
+              children: [
+                SizedBox(height: 10,),
+                const Card(child: Text('')),
+                const SizedBox(
+                  height: 10,
                 ),
-              )
-            ],
+                TextFormField(
+                  controller: name,
+                  enabled: false,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: email,
+                  enabled: false,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => UpdateScreen()));
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 70,
+                    color: Colors.green,
+                    child: Center(child: Text('Log in')),
+                  ),
+                )
+              ],
+            ),
           ),
         ));
       },

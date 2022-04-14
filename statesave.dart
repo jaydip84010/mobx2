@@ -1,11 +1,12 @@
 import 'package:mobx/mobx.dart';
+
 part 'statesave.g.dart';
 
-class StateSave= StateSaveBase with _$StateSave;
+class StateSave = StateSaveBase with _$StateSave;
 
 abstract class StateSaveBase with Store {
   @observable
-  String image = "";
+  String image = '';
 
   @observable
   String name = "";
@@ -15,12 +16,12 @@ abstract class StateSaveBase with Store {
 
   @action
   void changeName(String value) {
-     image= value;
+    name = value;
   }
 
   @action
   void changeImage(String value) {
-    name = value;
+    image = value;
   }
 
   @action
