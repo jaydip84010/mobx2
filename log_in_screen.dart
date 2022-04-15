@@ -35,22 +35,20 @@ class _LOgInScreenState extends State<LOgInScreen> {
           body: Form(
             child: Column(
               children: [
-                SizedBox(height: 10,),
-                const Card(child: Text('')),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  controller: name,
-                  enabled: false,
-                ),
                 SizedBox(
                   height: 10,
                 ),
-                TextFormField(
-                  controller: email,
-                  enabled: false,
+                Card(
+                  child: Image.file(File(stateSave.image)),
                 ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(stateSave.name),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(stateSave.email),
                 SizedBox(
                   height: 10,
                 ),
